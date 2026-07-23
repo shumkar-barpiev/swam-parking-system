@@ -1,21 +1,40 @@
 package com.myexam.entity;
 
+import com.myexam.entity.type.ParkingSpotType;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Getter
+@Setter
+@Table(name = "parking_spots", uniqueConstraints = {
+		@UniqueConstraint(name = "uk_parking_spot_number", columnNames = {"parking_zone_id", "spot_number"})
+})
 public class ParkingSpot {
-	public enum ParkingSpotType {
-		STANDARD,
-		MOTORCYCLE,
-		ELECTRIC,
-		DISABLED
-	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String spotNumber;
-	private ParkingSpotType type;
-	private boolean active;
 
+	@Column(name = "spot_number", nullable = false, length = 20)
+	private String spotNumber;
+
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, length = 20)
+	private ParkingSpotType type;
+
+	@Column(length = 50)
+	private boolean active = true;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "parking_zone_id", nullable = false)
 	private ParkingZone parkingZone;
-	private List<ParkingTicket> parkingTickets;
+
+	@OneToMany(mappedBy = "parkingSpot")
+	private List<ParkingTicket> parkingTickets = new ArrayList<>();
 }
 
