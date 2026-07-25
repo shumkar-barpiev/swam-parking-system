@@ -22,5 +22,5 @@ public class DriverResponse implements Serializable {
 	String phoneNumber;
 	String drivingLicenseNumber;
 	AddressResponse address;
-	Set<Long> vehicleIds;
+	private Set<Long> vehicleIds;
 }
