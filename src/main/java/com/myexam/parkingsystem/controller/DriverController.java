@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/drivers")
@@ -41,6 +42,10 @@ public class DriverController {
 				.body(driverResponse);
 	}
 
+	@GetMapping
+	public ResponseEntity<List<DriverResponse>> getAllDrivers() {
+		return ResponseEntity.ok(driverService.getAllDrivers());
+	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<DriverResponse> updateDriver(@PathVariable Long id, @Valid @RequestBody UpdateDriverRequest request) {
