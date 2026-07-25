@@ -52,7 +52,6 @@ public class Driver {
 			}
 	)
 	private Set<Vehicle> vehicles = new HashSet<>();
-	;
 
 	@OneToMany(mappedBy = "driver")
 	private List<ParkingTicket> parkingTickets = new ArrayList<>();

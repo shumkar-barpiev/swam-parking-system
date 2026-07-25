@@ -26,9 +26,37 @@
     <tag/>
     <url/>
   </scm>
+
   <properties>
     <java.version>21</java.version>
+    <sonar.tests>
+      ${project.basedir}/src/test/java
+    </sonar.tests>
+
+    <sonar.junit.reportPaths>
+      ${project.build.directory}/surefire-reports,
+      ${project.build.directory}/failsafe-reports
+    </sonar.junit.reportPaths>
+
+    <sonar.coverage.exclusions>
+      **/model/**,
+      **/app/**
+    </sonar.coverage.exclusions>
+
+    <sonar.issue.ignore.multicriteria>e11,e12, e13</sonar.issue.ignore.multicriteria>
+
+    <sonar.issue.ignore.multicriteria.e11.ruleKey>java:S117</sonar.issue.ignore.multicriteria.e11.ruleKey>
+
+    <sonar.issue.ignore.multicriteria.e12.ruleKey>java:S2699</sonar.issue.ignore.multicriteria.e12.ruleKey>
+    <sonar.issue.ignore.multicriteria.e12.resourceKey>**/*Test.java</sonar.issue.ignore.multicriteria.e12.resourceKey>
+
+    <sonar.issue.ignore.multicriteria.e13.ruleKey>java:S3577</sonar.issue.ignore.multicriteria.e13.ruleKey>
+
+    <sonar.coverage.jacoco.xmlReportPaths>
+      ${project.build.directory}/site/jacoco/jacoco.xml
+    </sonar.coverage.jacoco.xmlReportPaths>
   </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
