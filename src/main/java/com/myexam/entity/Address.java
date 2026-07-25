@@ -18,13 +18,13 @@ public class Address {
 	@Column(nullable = false, length = 150)
 	private String street;
 
-	@Column(nullable = false, length = 150)
+	@Column(nullable = false, length = 100)
 	private String city;
 
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, length = 20)
 	private String postalCode;
 
-	@Column(nullable = false, length = 150)
+	@Column(nullable = false, length = 100)
 	private String country;
 
 	@OneToOne(mappedBy = "address", fetch = FetchType.LAZY)

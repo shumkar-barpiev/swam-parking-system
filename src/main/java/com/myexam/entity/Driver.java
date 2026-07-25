@@ -26,10 +26,10 @@ public class Driver {
 	@Column(nullable = false, length = 100)
 	private String fullName;
 
-	@Column(nullable = false, length = 50, unique = true)
+	@Column(nullable = false, length = 120, unique = true)
 	private String email;
 
-	@Column(length = 50)
+	@Column(length = 30)
 	private String phoneNumber;
 
 	@Column(name = "driving_license", nullable = false, length = 50)
