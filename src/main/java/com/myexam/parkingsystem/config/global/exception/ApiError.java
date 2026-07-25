@@ -1,10 +1,11 @@
 package com.myexam.parkingsystem.config.global.exception;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Map;
 
 public record ApiError(
-		LocalDateTime timestamp,
+		Instant timestamp,
 		int status,
 		String error,
 		String message,

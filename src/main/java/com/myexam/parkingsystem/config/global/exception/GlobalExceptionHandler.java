@@ -6,7 +6,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
 			ResourceNotFoundException exception
 	) {
 		ApiError error = new ApiError(
-				LocalDateTime.now(),
+				Instant.now(),
 				HttpStatus.NOT_FOUND.value(),
 				HttpStatus.NOT_FOUND.getReasonPhrase(),
 				exception.getMessage(),
@@ -35,7 +35,7 @@ public class GlobalExceptionHandler {
 			ConflictException exception
 	) {
 		ApiError error = new ApiError(
-				LocalDateTime.now(),
+				Instant.now(),
 				HttpStatus.CONFLICT.value(),
 				HttpStatus.CONFLICT.getReasonPhrase(),
 				exception.getMessage(),
@@ -64,7 +64,7 @@ public class GlobalExceptionHandler {
 				);
 
 		ApiError error = new ApiError(
-				LocalDateTime.now(),
+				Instant.now(),
 				HttpStatus.BAD_REQUEST.value(),
 				HttpStatus.BAD_REQUEST.getReasonPhrase(),
 				"Request validation failed",

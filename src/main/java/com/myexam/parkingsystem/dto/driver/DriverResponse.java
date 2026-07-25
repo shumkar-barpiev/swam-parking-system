@@ -4,6 +4,7 @@ import com.myexam.parkingsystem.dto.address.AddressResponse;
 import com.myexam.parkingsystem.entity.Driver;
 import lombok.Value;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -12,6 +13,9 @@ import java.util.Set;
  */
 @Value
 public class DriverResponse implements Serializable {
+	@Serial
+	private static final long serialVersionUID = 1L;
+
 	Long id;
 	String fullName;
 	String email;
