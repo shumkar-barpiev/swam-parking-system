@@ -18,5 +18,5 @@ public class ParkingZoneResponse implements Serializable {
 	String description;
 	BigDecimal hourlyRate;
 	boolean active;
-	List<ParkingSpotResponse> parkingSpots;
+	private List<ParkingSpotResponse> parkingSpots;
 }
