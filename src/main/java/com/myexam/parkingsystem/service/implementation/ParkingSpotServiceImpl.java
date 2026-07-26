@@ -1,6 +1,6 @@
 package com.myexam.parkingsystem.service.implementation;
 
-import com.myexam.parkingsystem.config.global.exception.ConflictException;
+import com.myexam.parkingsystem.config.global.exception.ResourceNotFoundException;
 import com.myexam.parkingsystem.dto.parking_spot.ParkingSpotRequest;
 import com.myexam.parkingsystem.dto.parking_spot.ParkingSpotResponse;
 import com.myexam.parkingsystem.entity.ParkingSpot;
@@ -37,7 +37,7 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
 		ParkingZone parkingZone = parkingZoneRepository.findById(request.getParkingZoneId()).orElse(null);
 
 		if (parkingZone == null) {
-			throw new ConflictException(
+			throw new ResourceNotFoundException(
 					"Parking zone with id " + request.getParkingZoneId() + " not found"
 			);
 		}
@@ -55,13 +55,13 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
 		ParkingZone parkingZone = parkingZoneRepository.findById(request.getParkingZoneId()).orElse(null);
 
 		if (parkingSpot == null) {
-			throw new ConflictException(
+			throw new ResourceNotFoundException(
 					"Parking spot with id " + id + " not found"
 			);
 		}
 
 		if (parkingZone == null) {
-			throw new ConflictException(
+			throw new ResourceNotFoundException(
 					"Parking zone with id " + request.getParkingZoneId() + " not found"
 			);
 		}
@@ -78,7 +78,7 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
 	public ParkingSpotResponse getParkingSpotById(Long id) {
 		ParkingSpot parkingSpot = parkingSpotRepository.findById(id).orElse(null);
 		if (parkingSpot == null) {
-			throw new ConflictException(
+			throw new ResourceNotFoundException(
 					"Parking spot with id " + id + " not found"
 			);
 		}
@@ -106,13 +106,13 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
 		ParkingZone parkingZone = parkingZoneRepository.findById(parkingZoneId).orElse(null);
 
 		if (parkingSpot == null) {
-			throw new ConflictException(
+			throw new ResourceNotFoundException(
 					"Parking spot not found with id " + parkingSpotId
 			);
 		}
 
 		if (parkingZone == null) {
-			throw new ConflictException(
+			throw new ResourceNotFoundException(
 					"Parking zone not found with id " + parkingZoneId
 			);
 		}

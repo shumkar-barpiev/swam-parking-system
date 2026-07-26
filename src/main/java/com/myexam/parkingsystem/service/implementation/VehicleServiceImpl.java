@@ -1,6 +1,7 @@
 package com.myexam.parkingsystem.service.implementation;
 
 import com.myexam.parkingsystem.config.global.exception.ConflictException;
+import com.myexam.parkingsystem.config.global.exception.ResourceNotFoundException;
 import com.myexam.parkingsystem.dto.vehicle.CreateVehicleRequest;
 import com.myexam.parkingsystem.dto.vehicle.UpdateVehicleRequest;
 import com.myexam.parkingsystem.dto.vehicle.VehicleResponse;
@@ -45,7 +46,7 @@ public class VehicleServiceImpl implements VehicleService {
 		Vehicle vehicle = vehicleRepository.findById(id).orElse(null);
 
 		if (vehicle == null) {
-			throw new ConflictException(
+			throw new ResourceNotFoundException(
 					"Vehicle not found with id " + id
 			);
 		}
@@ -68,7 +69,7 @@ public class VehicleServiceImpl implements VehicleService {
 		Vehicle vehicle = vehicleRepository.findById(id).orElse(null);
 
 		if (vehicle == null) {
-			throw new ConflictException(
+			throw new ResourceNotFoundException(
 					"Vehicle not found with id " + id
 			);
 		}

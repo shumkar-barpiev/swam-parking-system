@@ -1,5 +1,6 @@
 package com.myexam.parkingsystem.service.implementation;
 
+import com.myexam.parkingsystem.config.global.exception.ResourceNotFoundException;
 import com.myexam.parkingsystem.dto.parking_ticket.ParkingTicketRequest;
 import com.myexam.parkingsystem.dto.parking_ticket.ParkingTicketResponse;
 import com.myexam.parkingsystem.entity.Driver;
@@ -64,7 +65,7 @@ public class ParkingTicketServiceImpl implements ParkingTicketService {
 		ParkingTicket parkingTicket = parkingTicketRepository.findById(id).orElse(null);
 
 		if (parkingTicket == null) {
-			throw new RuntimeException(
+			throw new ResourceNotFoundException(
 					"Parking ticket not found with id " + id
 			);
 		}
@@ -84,7 +85,7 @@ public class ParkingTicketServiceImpl implements ParkingTicketService {
 	public ParkingTicketResponse getParkingTicketById(Long id) {
 		ParkingTicket parkingTicket = parkingTicketRepository.findById(id).orElse(null);
 		if (parkingTicket == null) {
-			throw new RuntimeException(
+			throw new ResourceNotFoundException(
 					"Parking ticket not found with id " + id
 			);
 		}
@@ -107,16 +108,16 @@ public class ParkingTicketServiceImpl implements ParkingTicketService {
 
 	private Driver getDriverById(Long driverId) {
 		return driverRepository.findById(driverId).orElseThrow(() ->
-				new RuntimeException("Driver not found with id " + driverId));
+				new ResourceNotFoundException("Driver not found with id " + driverId));
 	}
 
 	private Vehicle getVehicleById(Long vehicleId) {
 		return vehicleRepository.findById(vehicleId).orElseThrow(() ->
-				new RuntimeException("Vehicle not found with id " + vehicleId));
+				new ResourceNotFoundException("Vehicle not found with id " + vehicleId));
 	}
 
 	private ParkingSpot getParkingSpotById(Long parkingSpotId) {
 		return parkingSpotRepository.findById(parkingSpotId).orElseThrow(() ->
-				new RuntimeException("Parking spot not found with id " + parkingSpotId));
+				new ResourceNotFoundException("Parking spot not found with id " + parkingSpotId));
 	}
 }
