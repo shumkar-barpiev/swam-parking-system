@@ -65,12 +65,12 @@ public class ParkingTicketServiceImpl implements ParkingTicketService {
 
 		if (parkingTicket == null) {
 			throw new RuntimeException(
-					"Parking ticket with id " + id + " not found"
+					"Parking ticket not found with id " + id
 			);
 		}
 
 		parkingTicketMapper.updateEntity(parkingTicket, request);
-		
+
 		parkingTicket.setDriver(getDriverById(request.getDriverId()));
 		parkingTicket.setVehicle(getVehicleById(request.getVehicleId()));
 		parkingTicket.setParkingSpot(getParkingSpotById(request.getParkingSpotId()));
@@ -85,7 +85,7 @@ public class ParkingTicketServiceImpl implements ParkingTicketService {
 		ParkingTicket parkingTicket = parkingTicketRepository.findById(id).orElse(null);
 		if (parkingTicket == null) {
 			throw new RuntimeException(
-					"Parking ticket with id " + id + " not found"
+					"Parking ticket not found with id " + id
 			);
 		}
 
@@ -107,16 +107,16 @@ public class ParkingTicketServiceImpl implements ParkingTicketService {
 
 	private Driver getDriverById(Long driverId) {
 		return driverRepository.findById(driverId).orElseThrow(() ->
-				new RuntimeException("Driver with id " + driverId + " not found"));
+				new RuntimeException("Driver not found with id " + driverId));
 	}
 
 	private Vehicle getVehicleById(Long vehicleId) {
 		return vehicleRepository.findById(vehicleId).orElseThrow(() ->
-				new RuntimeException("Vehicle with id " + vehicleId + " not found"));
+				new RuntimeException("Vehicle not found with id " + vehicleId));
 	}
 
 	private ParkingSpot getParkingSpotById(Long parkingSpotId) {
 		return parkingSpotRepository.findById(parkingSpotId).orElseThrow(() ->
-				new RuntimeException("Parking spot with id " + parkingSpotId + " not found"));
+				new RuntimeException("Parking spot not found with id " + parkingSpotId));
 	}
 }

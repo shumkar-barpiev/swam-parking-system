@@ -3,6 +3,7 @@ package com.myexam.parkingsystem.mapper;
 import com.myexam.parkingsystem.dto.parking_spot.ParkingSpotResponse;
 import com.myexam.parkingsystem.dto.parking_zone.ParkingZoneRequest;
 import com.myexam.parkingsystem.dto.parking_zone.ParkingZoneResponse;
+import com.myexam.parkingsystem.entity.ParkingSpot;
 import com.myexam.parkingsystem.entity.ParkingZone;
 import org.springframework.stereotype.Component;
 
@@ -36,18 +37,11 @@ public class ParkingZoneMapper {
 		}
 
 		List<ParkingSpotResponse> parkingSpotResponses =
-				parkingZone.getParkingSpots() == null
-						? List.of()
-						: parkingZone.getParkingSpots()
+				parkingZone.getParkingSpots()
 						.stream()
-						.map(parkingSpot -> new ParkingSpotResponse(
-								parkingSpot.getId(),
-								parkingSpot.getSpotNumber(),
-								parkingSpot.getType(),
-								parkingSpot.isActive(),
-								parkingSpot.getParkingZone() != null ? parkingSpot.getParkingZone().getId() : null
-						))
+						.map(this::toParkingSpotResponse)
 						.toList();
+
 
 		return new ParkingZoneResponse(
 				parkingZone.getId(),
@@ -57,6 +51,24 @@ public class ParkingZoneMapper {
 				parkingZone.getHourlyRate(),
 				parkingZone.isActive(),
 				parkingSpotResponses
+		);
+	}
+
+	private ParkingSpotResponse toParkingSpotResponse(
+			ParkingSpot parkingSpot
+	) {
+		Long parkingZoneId = null;
+
+		if (parkingSpot.getParkingZone() != null) {
+			parkingZoneId = parkingSpot.getParkingZone().getId();
+		}
+
+		return new ParkingSpotResponse(
+				parkingSpot.getId(),
+				parkingSpot.getSpotNumber(),
+				parkingSpot.getType(),
+				parkingSpot.isActive(),
+				parkingZoneId
 		);
 	}
 }

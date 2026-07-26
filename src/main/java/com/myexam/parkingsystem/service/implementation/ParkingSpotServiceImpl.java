@@ -107,13 +107,13 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
 
 		if (parkingSpot == null) {
 			throw new ConflictException(
-					"Parking spot with id " + parkingSpotId + " not found"
+					"Parking spot not found with id " + parkingSpotId
 			);
 		}
 
 		if (parkingZone == null) {
 			throw new ConflictException(
-					"Parking zone with id " + parkingZoneId + " not found"
+					"Parking zone not found with id " + parkingZoneId
 			);
 		}
 

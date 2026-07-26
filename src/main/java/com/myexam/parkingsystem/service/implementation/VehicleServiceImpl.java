@@ -46,7 +46,7 @@ public class VehicleServiceImpl implements VehicleService {
 
 		if (vehicle == null) {
 			throw new ConflictException(
-					"Vehicle with id " + id + " not found"
+					"Vehicle not found with id " + id
 			);
 		}
 
@@ -69,7 +69,7 @@ public class VehicleServiceImpl implements VehicleService {
 
 		if (vehicle == null) {
 			throw new ConflictException(
-					"Vehicle with id " + id + " not found"
+					"Vehicle not found with id " + id
 			);
 		}
 
