@@ -27,7 +27,7 @@ public class ParkingSpot {
 	@Column(nullable = false, length = 20)
 	private ParkingSpotType type;
 
-	@Column(length = 50)
+	@Column(length = 20)
 	private boolean active = true;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
