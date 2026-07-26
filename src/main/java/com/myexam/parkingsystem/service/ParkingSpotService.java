@@ -8,7 +8,7 @@ import java.util.List;
 public interface ParkingSpotService {
 	ParkingSpotResponse createParkingSpot(ParkingSpotRequest request);
 
-	ParkingSpotResponse updateParkingSpot(ParkingSpotRequest request);
+	ParkingSpotResponse updateParkingSpot(Long id, ParkingSpotRequest request);
 
 	ParkingSpotResponse getParkingSpotById(Long id);
 

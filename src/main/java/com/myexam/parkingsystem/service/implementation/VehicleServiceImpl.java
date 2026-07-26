@@ -24,6 +24,7 @@ public class VehicleServiceImpl implements VehicleService {
 	}
 
 	@Override
+	@Transactional
 	public VehicleResponse createVehicle(CreateVehicleRequest vehicleRequest) {
 		Vehicle vehicle = vehicleMapper.toEntity(vehicleRequest);
 		boolean vehicleExists = vehicleRepository.existsByLicensePlateIgnoreCase(vehicle.getLicensePlate());
@@ -62,7 +63,7 @@ public class VehicleServiceImpl implements VehicleService {
 	}
 
 	@Override
-	@Transactional(readOnly = true)
+	@Transactional
 	public VehicleResponse updateVehicle(Long id, UpdateVehicleRequest request) {
 		Vehicle vehicle = vehicleRepository.findById(id).orElse(null);
 
@@ -79,6 +80,7 @@ public class VehicleServiceImpl implements VehicleService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteVehicle(Long id) {
 		Vehicle vehicle = vehicleRepository.findById(id).orElse(null);
 		vehicleRepository.delete(vehicle);
