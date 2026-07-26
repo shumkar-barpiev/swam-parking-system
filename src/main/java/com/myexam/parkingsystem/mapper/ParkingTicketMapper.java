@@ -3,7 +3,9 @@ package com.myexam.parkingsystem.mapper;
 import com.myexam.parkingsystem.dto.parking_ticket.ParkingTicketRequest;
 import com.myexam.parkingsystem.dto.parking_ticket.ParkingTicketResponse;
 import com.myexam.parkingsystem.entity.ParkingTicket;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ParkingTicketMapper {
 	public ParkingTicket toEntity(ParkingTicketRequest request) {
 		ParkingTicket parkingTicket = new ParkingTicket();

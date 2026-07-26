@@ -30,6 +30,7 @@ public class DriverServiceImpl implements DriverService {
 	}
 
 	@Override
+	@Transactional
 	public DriverResponse createDriver(CreateDriverRequest request) {
 		String email = request.getEmail().trim().toLowerCase();
 
@@ -68,7 +69,7 @@ public class DriverServiceImpl implements DriverService {
 	}
 
 	@Override
-	@Transactional(readOnly = true)
+	@Transactional
 	public DriverResponse updateDriver(Long id, UpdateDriverRequest request) {
 		Driver driver = driverRepository.findById(id).orElse(null);
 		String email = request.getEmail().trim().toLowerCase();
@@ -104,6 +105,7 @@ public class DriverServiceImpl implements DriverService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteDriver(Long id) {
 		Driver driver = driverRepository.findById(id).orElse(null);
 
@@ -116,6 +118,7 @@ public class DriverServiceImpl implements DriverService {
 	}
 
 	@Override
+	@Transactional
 	public DriverResponse assignVehicle(Long driverId, Long vehicleId) {
 		Driver driver = findDriverById(driverId);
 		Vehicle vehicle = findVehicleById(vehicleId);
@@ -132,6 +135,7 @@ public class DriverServiceImpl implements DriverService {
 	}
 
 	@Override
+	@Transactional
 	public DriverResponse removeVehicle(Long driverId, Long vehicleId) {
 		Driver driver = findDriverById(driverId);
 		Vehicle vehicle = findVehicleById(vehicleId);
