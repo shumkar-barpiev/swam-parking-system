@@ -18,4 +18,5 @@ public class ParkingTicketResponse implements Serializable {
 	LocalDateTime exitTime;
 	TicketStatus status;
 	BigDecimal totalCost;
+
 }

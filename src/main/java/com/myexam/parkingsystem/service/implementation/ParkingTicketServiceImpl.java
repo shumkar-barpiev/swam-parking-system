@@ -2,9 +2,15 @@ package com.myexam.parkingsystem.service.implementation;
 
 import com.myexam.parkingsystem.dto.parking_ticket.ParkingTicketRequest;
 import com.myexam.parkingsystem.dto.parking_ticket.ParkingTicketResponse;
+import com.myexam.parkingsystem.entity.Driver;
+import com.myexam.parkingsystem.entity.ParkingSpot;
 import com.myexam.parkingsystem.entity.ParkingTicket;
+import com.myexam.parkingsystem.entity.Vehicle;
 import com.myexam.parkingsystem.mapper.ParkingTicketMapper;
+import com.myexam.parkingsystem.repository.DriverRepository;
+import com.myexam.parkingsystem.repository.ParkingSpotRepository;
 import com.myexam.parkingsystem.repository.ParkingTicketRepository;
+import com.myexam.parkingsystem.repository.VehicleRepository;
 import com.myexam.parkingsystem.service.ParkingTicketService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,16 +22,37 @@ import java.util.stream.Collectors;
 public class ParkingTicketServiceImpl implements ParkingTicketService {
 	private final ParkingTicketRepository parkingTicketRepository;
 	private final ParkingTicketMapper parkingTicketMapper;
+	private final ParkingSpotRepository parkingSpotRepository;
+	private final DriverRepository driverRepository;
+	private final VehicleRepository vehicleRepository;
 
-	ParkingTicketServiceImpl(ParkingTicketRepository parkingTicketRepository, ParkingTicketMapper parkingTicketMapper) {
+	ParkingTicketServiceImpl(
+			ParkingTicketRepository parkingTicketRepository,
+			ParkingTicketMapper parkingTicketMapper,
+			ParkingSpotRepository parkingSpotRepository,
+			DriverRepository driverRepository,
+			VehicleRepository vehicleRepository
+	) {
 		this.parkingTicketRepository = parkingTicketRepository;
 		this.parkingTicketMapper = parkingTicketMapper;
+		this.parkingSpotRepository = parkingSpotRepository;
+		this.driverRepository = driverRepository;
+		this.vehicleRepository = vehicleRepository;
 	}
 
 	@Override
 	@Transactional
-	public ParkingTicketResponse createParkingTicket(ParkingTicketRequest parkingTicketRequest) {
-		ParkingTicket parkingTicket = parkingTicketMapper.toEntity(parkingTicketRequest);
+	public ParkingTicketResponse createParkingTicket(ParkingTicketRequest request) {
+		ParkingTicket parkingTicket = parkingTicketMapper.toEntity(request);
+
+		Driver driver = getDriverById(request.getDriverId());
+		Vehicle vehicle = getVehicleById(request.getVehicleId());
+		ParkingSpot parkingSpot = getParkingSpotById(request.getParkingSpotId());
+
+		parkingTicket.setDriver(driver);
+		parkingTicket.setVehicle(vehicle);
+		parkingTicket.setParkingSpot(parkingSpot);
+
 		parkingTicketRepository.save(parkingTicket);
 
 		return parkingTicketMapper.toResponse(parkingTicket);
@@ -33,7 +60,7 @@ public class ParkingTicketServiceImpl implements ParkingTicketService {
 
 	@Override
 	@Transactional
-	public ParkingTicketResponse updateParkingTicket(Long id, ParkingTicketRequest parkingTicketRequest) {
+	public ParkingTicketResponse updateParkingTicket(Long id, ParkingTicketRequest request) {
 		ParkingTicket parkingTicket = parkingTicketRepository.findById(id).orElse(null);
 
 		if (parkingTicket == null) {
@@ -42,7 +69,12 @@ public class ParkingTicketServiceImpl implements ParkingTicketService {
 			);
 		}
 
-		parkingTicketMapper.updateEntity(parkingTicket, parkingTicketRequest);
+		parkingTicketMapper.updateEntity(parkingTicket, request);
+		
+		parkingTicket.setDriver(getDriverById(request.getDriverId()));
+		parkingTicket.setVehicle(getVehicleById(request.getVehicleId()));
+		parkingTicket.setParkingSpot(getParkingSpotById(request.getParkingSpotId()));
+
 		parkingTicketRepository.save(parkingTicket);
 		return parkingTicketMapper.toResponse(parkingTicket);
 	}
@@ -71,5 +103,20 @@ public class ParkingTicketServiceImpl implements ParkingTicketService {
 	public void deleteParkingTicket(Long id) {
 		ParkingTicket parkingTicket = parkingTicketRepository.findById(id).orElse(null);
 		parkingTicketRepository.delete(parkingTicket);
+	}
+
+	private Driver getDriverById(Long driverId) {
+		return driverRepository.findById(driverId).orElseThrow(() ->
+				new RuntimeException("Driver with id " + driverId + " not found"));
+	}
+
+	private Vehicle getVehicleById(Long vehicleId) {
+		return vehicleRepository.findById(vehicleId).orElseThrow(() ->
+				new RuntimeException("Vehicle with id " + vehicleId + " not found"));
+	}
+
+	private ParkingSpot getParkingSpotById(Long parkingSpotId) {
+		return parkingSpotRepository.findById(parkingSpotId).orElseThrow(() ->
+				new RuntimeException("Parking spot with id " + parkingSpotId + " not found"));
 	}
 }

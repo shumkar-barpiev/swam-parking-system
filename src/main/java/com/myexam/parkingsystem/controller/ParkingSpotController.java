@@ -57,4 +57,13 @@ public class ParkingSpotController {
 		parkingSpotService.deleteParkingSpot(id);
 		return ResponseEntity.noContent().build();
 	}
+
+	@PutMapping("/{parkingSpotId}/assign-zone/{parkingZoneId}")
+	public ResponseEntity<ParkingSpotResponse> assignParkingZone(
+			@PathVariable Long parkingSpotId,
+			@PathVariable Long parkingZoneId
+	) {
+		ParkingSpotResponse updatedParkingSpot = parkingSpotService.assignParkingZone(parkingSpotId, parkingZoneId);
+		return ResponseEntity.ok(updatedParkingSpot);
+	}
 }

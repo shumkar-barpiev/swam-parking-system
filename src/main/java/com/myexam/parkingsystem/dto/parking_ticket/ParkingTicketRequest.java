@@ -15,6 +15,10 @@ import java.time.LocalDateTime;
  */
 @Value
 public class ParkingTicketRequest implements Serializable {
+	Long driverId;
+	Long vehicleId;
+	Long parkingSpotId;
+
 	@Size(max = 40)
 	@NotBlank(message = "Ticket number can't be blank.")
 	String ticketNumber;

@@ -1,5 +1,6 @@
 package com.myexam.parkingsystem.dto.parking_spot;
 
+import com.myexam.parkingsystem.entity.ParkingZone;
 import com.myexam.parkingsystem.entity.type.ParkingSpotType;
 import lombok.Value;
 
@@ -14,4 +15,5 @@ public class ParkingSpotResponse implements Serializable {
 	String spotNumber;
 	ParkingSpotType type;
 	boolean active;
+	Long parkingZoneId;
 }

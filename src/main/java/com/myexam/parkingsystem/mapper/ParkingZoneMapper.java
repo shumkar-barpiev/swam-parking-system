@@ -44,7 +44,8 @@ public class ParkingZoneMapper {
 								parkingSpot.getId(),
 								parkingSpot.getSpotNumber(),
 								parkingSpot.getType(),
-								parkingSpot.isActive()
+								parkingSpot.isActive(),
+								parkingSpot.getParkingZone() != null ? parkingSpot.getParkingZone().getId() : null
 						))
 						.toList();
 

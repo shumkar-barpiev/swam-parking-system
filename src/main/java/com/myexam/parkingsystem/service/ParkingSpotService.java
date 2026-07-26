@@ -16,4 +16,7 @@ public interface ParkingSpotService {
 	List<ParkingSpotResponse> getParkingSpots();
 
 	void deleteParkingSpot(Long id);
+
+	ParkingSpotResponse assignParkingZone(Long parkingSpotId, Long parkingZoneId);
+
 }

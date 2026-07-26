@@ -13,6 +13,8 @@ import java.io.Serializable;
  */
 @Value
 public class ParkingSpotRequest implements Serializable {
+	Long parkingZoneId;
+
 	@Size(max = 20)
 	@NotBlank(message = "Parking spot number can't be blank.")
 	String spotNumber;
