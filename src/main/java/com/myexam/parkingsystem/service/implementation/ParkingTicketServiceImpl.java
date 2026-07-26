@@ -68,7 +68,7 @@ public class ParkingTicketServiceImpl implements ParkingTicketService {
 
 	@Override
 	@Transactional
-	public void deleteParkingZone(Long id) {
+	public void deleteParkingTicket(Long id) {
 		ParkingTicket parkingTicket = parkingTicketRepository.findById(id).orElse(null);
 		parkingTicketRepository.delete(parkingTicket);
 	}

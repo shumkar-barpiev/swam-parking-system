@@ -7,11 +7,13 @@ import com.myexam.parkingsystem.entity.ParkingSpot;
 import com.myexam.parkingsystem.mapper.ParkingSpotMapper;
 import com.myexam.parkingsystem.repository.ParkingSpotRepository;
 import com.myexam.parkingsystem.service.ParkingSpotService;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class ParkingSpotServiceImpl implements ParkingSpotService {
 
 	private final ParkingSpotRepository parkingSpotRepository;
