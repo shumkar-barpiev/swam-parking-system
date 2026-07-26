@@ -14,5 +14,5 @@ public interface ParkingTicketService {
 
 	List<ParkingTicketResponse> getParkingTickets();
 
-	void deleteParkingZone(Long id);
+	void deleteParkingTicket(Long id);
 }

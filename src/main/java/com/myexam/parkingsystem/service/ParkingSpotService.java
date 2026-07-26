@@ -2,6 +2,7 @@ package com.myexam.parkingsystem.service;
 
 import com.myexam.parkingsystem.dto.parking_spot.ParkingSpotRequest;
 import com.myexam.parkingsystem.dto.parking_spot.ParkingSpotResponse;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
