@@ -103,6 +103,23 @@ swam-parking-system/
 
 ## Architecture
 
+```text
+src/main/java/com/myexam/parkingsystem
+├── controller
+├── dto
+│   ├── driver
+│   ├── vehicle
+│   ├── parking_zone
+│   ├── parking_spot
+│   └── parking_ticket
+├── entity
+│   └── type
+├── exception
+├── mapper
+├── repository
+└── service
+```
+
 The project uses a layered architecture.
 
 ```text
