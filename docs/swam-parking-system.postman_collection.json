@@ -1,0 +1,750 @@
+{
+  "info": {
+    "_postman_id": "0a29966c-5696-428b-baef-c0f3afa7426d",
+    "name": "swam-parking-system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14574931"
+  },
+  "item": [
+    {
+      "name": "Driver",
+      "item": [
+        {
+          "name": "CreateDriver",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fullName\": \"John Smith\",\n    \"email\": \"john.smith@example.com\",\n    \"phoneNumber\": \"+39 333 123 4567\",\n    \"drivingLicenseNumber\": \"DL-123456\",\n    \"address\": {\n        \"street\": \"Via Roma 10\",\n        \"city\": \"Florence\",\n        \"postalCode\": \"50123\",\n        \"country\": \"Italy\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/drivers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "drivers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetDriver",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/drivers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "drivers",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetDrivers",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/drivers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "drivers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateDriver",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fullName\": \"John Jones\",\n    \"email\": \"john.smith@example.com\",\n    \"phoneNumber\": \"+39 333 123 4567\",\n    \"drivingLicenseNumber\": \"DL-123456\",\n    \"address\": {\n        \"street\": \"Via Roma 10\",\n        \"city\": \"Florence\",\n        \"postalCode\": \"50125\",\n        \"country\": \"Italy\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/drivers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "drivers",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteDriver",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/drivers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "drivers",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AssignVehicle",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/drivers/1/vehicles/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "drivers",
+                "1",
+                "vehicles",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "RemoveVehicle",
+          "request": {
+            "method": "DELETE",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Vehicle",
+      "item": [
+        {
+          "name": "CreateVehicle",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"licensePlate\": \"AB123\",\n    \"model\": \"Mercedes Bens S class\",\n    \"type\": \"CAR\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/vehicles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "vehicles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetVehicle",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/vehicles/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "vehicles",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetVehicles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/vehicles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "vehicles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateVehicle",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"licensePlate\": \"AB456\",\n    \"model\": \"Mercedes Bens B class\",\n    \"type\": \"CAR\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/vehicles/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "vehicles",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteVehicle",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/vehicles/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "vehicles",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Parking",
+      "item": [
+        {
+          "name": "Zone",
+          "item": [
+            {
+              "name": "CreateParkingZone",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Parking zone B\",\n    \"code\": \"QWE124\",\n    \"description\": \"something to describe.\",\n    \"hourlyRate\": 14.5,\n    \"active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-zones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-zones"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GetParkingZones",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-zones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-zones"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X GET http://localhost:8080/api/parking-zones"
+              },
+              "response": []
+            },
+            {
+              "name": "GetParkingZone",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-zones/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-zones",
+                    "1"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X GET http://localhost:8080/api/parking-zones/1"
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateParkingZone",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Parking zone B\",\n    \"code\": \"QWE124\",\n    \"description\": \"something to describe.\",\n    \"hourlyRate\": 16.5,\n    \"active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-zones/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-zones",
+                    "1"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X PUT http://localhost:8080/api/parking-zones/1 -H \"Content-Type: application/json\" -d '{\"name\": \"Zone A\", \"capacity\": 50}'"
+              },
+              "response": []
+            },
+            {
+              "name": "DeleteParkingZone",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-zones/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-zones",
+                    "1"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X DELETE http://localhost:8080/api/parking-zones/1"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Spot",
+          "item": [
+            {
+              "name": "CreateParkingSpot",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"parkingZoneId\": 1,\n    \"spotNumber\": \"A1\",\n    \"type\": \"STANDARD\",\n    \"active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-spots",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-spots"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X POST http://localhost:8080/api/parking-spots -H \"Content-Type: application/json\" -d '{\"spotNumber\": \"A1\", \"zoneId\": 1, \"type\": \"STANDARD\"}'"
+              },
+              "response": []
+            },
+            {
+              "name": "GetParkingSpots",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-spots",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-spots"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X GET http://localhost:8080/api/parking-spots"
+              },
+              "response": []
+            },
+            {
+              "name": "GetParkingSpot",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-spots/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-spots",
+                    "1"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X GET http://localhost:8080/api/parking-spots/1"
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateParkingSpot",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"parkingZoneId\": 1,\n    \"spotNumber\": \"A32\",\n    \"type\": \"STANDARD\",\n    \"active\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-spots/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-spots",
+                    "1"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X PUT http://localhost:8080/api/parking-spots/1 -H \"Content-Type: application/json\" -d '{\"spotNumber\": \"A1\", \"zoneId\": 1, \"type\": \"STANDARD\"}'"
+              },
+              "response": []
+            },
+            {
+              "name": "DeleteParkingSpot",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-spots/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-spots",
+                    "1"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X DELETE http://localhost:8080/api/parking-spots/1"
+              },
+              "response": []
+            },
+            {
+              "name": "AssignParkingZone",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-spots/1/assign-zone/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-spots",
+                    "1",
+                    "assign-zone",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Tickets",
+          "item": [
+            {
+              "name": "CreateTicket",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"driverId\": 1,\n    \"vehicleId\": 1,\n    \"parkingSpotId\": 1,\n    \"ticketNumber\": \"ABC123\",\n    \"entryTime\": \"2026-07-25T10:00:00\",\n    \"exitTime\": \"\",\n    \"status\": \"ACTIVE\",\n    \"totalCost\": 24.6\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-tickets",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-tickets"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X POST http://localhost:8080/api/tickets -H \"Content-Type: application/json\" -d '{\"spotId\": 1, \"driverId\": 1, \"startTime\": \"2024-01-01T10:00:00\"}'"
+              },
+              "response": []
+            },
+            {
+              "name": "GetTickets",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-tickets",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-tickets"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X GET http://localhost:8080/api/tickets"
+              },
+              "response": []
+            },
+            {
+              "name": "GetTicket",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-tickets/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-tickets",
+                    "1"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X GET http://localhost:8080/api/tickets/1"
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateTicket",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"driverId\": 1,\n    \"vehicleId\": 1,\n    \"parkingSpotId\": 1,\n    \"ticketNumber\": \"ABC123\",\n    \"entryTime\": \"2026-07-25T10:00:00\",\n    \"exitTime\": \"2026-07-25T11:00:00\",\n    \"status\": \"ACTIVE\",\n    \"totalCost\": 24.6\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-tickets/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-tickets",
+                    "1"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X PUT http://localhost:8080/api/tickets/1 -H \"Content-Type: application/json\" -d '{\"spotId\": 1, \"driverId\": 1, \"endTime\": \"2024-01-01T12:00:00\"}'"
+              },
+              "response": []
+            },
+            {
+              "name": "DeleteTicket",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/parking-tickets/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "parking-tickets",
+                    "1"
+                  ]
+                },
+                "description": "Generated from cURL: curl -X DELETE http://localhost:8080/api/tickets/1"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,8 @@
+## Testing the API
+You can test the endpoints using Postman:
+1. Download the [Postman Collection](./docs/swam-parking-system.postman_collection.json).
+2. Import it into Postman (`File` -> `Import`).
+
 # SWAM course: Parking Management System
 
 A REST API for managing parking zones, parking spots, vehicles, drivers, and parking tickets.
